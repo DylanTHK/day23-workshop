@@ -1,10 +1,10 @@
 package com.workshop.day23.model;
 
-import java.util.Date;
+import org.joda.time.DateTime;
 
 public class Order {
     private Integer orderId = 10;
-    private Date orderDate;
+    private DateTime orderDate;
     private Integer customerId;
     private Float totalPrice;
     private Float totalCost;
@@ -17,10 +17,10 @@ public class Order {
     public void setOrderId(Integer orderId) {
         this.orderId = orderId;
     }
-    public Date getOrderDate() {
+    public DateTime getOrderDate() {
         return orderDate;
     }
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(DateTime orderDate) {
         this.orderDate = orderDate;
     }
     public Integer getCustomerId() {
