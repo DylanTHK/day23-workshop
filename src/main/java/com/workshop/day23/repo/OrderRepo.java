@@ -1,12 +1,9 @@
 package com.workshop.day23.repo;
 
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.SystemPropertyUtils;
 
 import com.workshop.day23.model.Order;
 
