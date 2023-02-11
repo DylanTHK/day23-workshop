@@ -1,6 +1,9 @@
 package com.workshop.day23.controller;
 
+import java.text.ParseException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.InvalidResultSetAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,27 +17,30 @@ import com.workshop.day23.model.Order;
 
 
 @Controller
-@RequestMapping
+@RequestMapping(path="/order")
 public class OrderController {
 
     @Autowired
     OrderRepo orderRepo;
 
-    @GetMapping(path="/details")
-    public String getNewIndex(Model model) {
-        model.addAttribute("order", new Order());
-        return "new";
+    @GetMapping
+    public String getNewIndex() {
+        return "index";
     }
 
     
-    @PostMapping(path="/details/{orderId}")
+    @PostMapping(path="/total/{orderId}")
     public String getOrderById(Model model, 
-    @PathVariable("orderId") String orderIdString,
-    BindingResult bs) {
-        System.out.println(model);
-        // run methods to retrieve order details
-        System.out.println();
+    @PathVariable("orderId") Integer orderId
+    ) throws InvalidResultSetAccessException, ParseException {
+        // run query to retrieve key details for order
+        Order o = orderRepo.getOrderDetails(orderId);
+        System.out.println("Created Order: " + o);
         
+        // pass created object to model
+        model.addAttribute("order", o);
+        
+        // System.out.println("Model: " + model);
         return "details";
     }
 }

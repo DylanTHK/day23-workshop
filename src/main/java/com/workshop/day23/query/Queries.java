@@ -17,6 +17,6 @@ public class Queries {
             ON o.id = od.order_id
             LEFT JOIN products AS p 
             ON od.product_id = p.id 
-            WHERE order_id=?;""";
+            WHERE order_id=?""";
             
 }

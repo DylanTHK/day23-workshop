@@ -19,7 +19,7 @@
         // function to add id to action => /details/{orderId}
         // https://stackoverflow.com/questions/34128361/appending-form-input-value-to-action-url-as-path
         function appendId() {
-            let appendedUrl = "/details/" + document.getElementById("orderId").value;
+            let appendedUrl = "/order/total/" + document.getElementById("orderId").value;
             let orderForm = document.getElementById("orderForm");
             orderForm.action = appendedUrl;
         }

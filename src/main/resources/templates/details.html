@@ -9,17 +9,62 @@
 <body>
     <!-- need to add thymeleaf object and bindingresult -->
     <h1>Order Details (details.html)</h1>
-    <form method="POST" action="#">
+    <form id="orderForm" onsubmit="appendId()" method="POST">
         Order Id:
-        <input type="text">
+        <input type="text" id="orderId">
         <button type="submit">Find Order</button>
     </form>
     <br>
 
     <h1>Order Details</h1>
-    <div>
-        <!-- insert thymeleaf content here -->
-
+    <table data-th-object="${order}">        
+        <tr>
+            <td>Order ID:</td>
+            <td data-th-text="*{orderId}"></td>
+        </tr>
+        <tr>
+            <td>Order Date:</td>
+            <td data-th-text="*{orderDate}"></td>
+        </tr>
+        <tr>
+            <td>Customer Id:</td>
+            <td data-th-text="*{customerId}"></td>
+        </tr>
+        <tr>
+            <td>Total Price:</td>
+            <td>$
+                <span data-th-text="*{totalPrice}"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Total Cost:</td>
+            <td>$
+                <span data-th-text="*{totalCost}"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Discount:</td>
+            <td>
+                <span data-th-text="*{discount}"></span>
+                %
+            </td>
+        </tr>
+        <tr>
+            <td>Discounted Price:</td>
+            <td>$
+                <span data-th-text="*{discountedPrice}"></span>
+            </td>
+        </tr>
     </div>
+
+    <script>
+        // function to add id to action => /details/{orderId}
+        // https://stackoverflow.com/questions/34128361/appending-form-input-value-to-action-url-as-path
+        function appendId() {
+            let appendedUrl = "/order/total/" + document.getElementById("orderId").value;
+            let orderForm = document.getElementById("orderForm");
+            orderForm.action = appendedUrl;
+        }
+    </script>
 </body>
 </html>
