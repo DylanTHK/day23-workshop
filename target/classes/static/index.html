@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h1>Order Details (index.html)</h1>
+    <form id="orderForm" onsubmit="appendId()" method="POST">
+        Find Order By Id:
+        <input type="text" id="orderId">
+        <button type="submit">Find Order</button>
+    </form>
+
+    <script>
+        // function to add id to action => /details/{orderId}
+        // https://stackoverflow.com/questions/34128361/appending-form-input-value-to-action-url-as-path
+        function appendId() {
+            let appendedUrl = "/details/" + document.getElementById("orderId").value;
+            let orderForm = document.getElementById("orderForm");
+            orderForm.action = appendedUrl;
+        }
+    </script>
+</body>
+</html>
